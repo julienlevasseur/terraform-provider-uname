@@ -11,8 +11,6 @@ var testProviders = map[string]*schema.Provider{
 }
 
 func TestProvider(t *testing.T) {
-	if err := New().InternalValidate()
-	if err := New().InternalValidate()
 	if err := New().InternalValidate(); err != nil {
 		t.Fatal("err: %s", err)
 	}
