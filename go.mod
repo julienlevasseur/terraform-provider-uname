@@ -1,9 +1,8 @@
-module github.com/julienlevasseur/terraform-provider-uname/v0
+module github.com/julienlevasseur/terraform-provider-uname
 
-go 1.14
+go 1.13
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.3.0
-	github.com/julienlevasseur/terraform-provider-uname v0.0.0-20201201174819-da43aa9bc514
-	github.com/matishsiao/goInfo v0.0.0-20200404012835-b5f882ee2288 // indirect
+	github.com/matishsiao/goInfo v0.0.0-20200404012835-b5f882ee2288
 )
