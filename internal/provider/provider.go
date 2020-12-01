@@ -6,10 +6,9 @@ import (
 
 func New() *schema.Provider {
 	return &schema.Provider{
-		Schema: map[string]*schema.Resource{
-			DataSourcesMap: map[string]*schema.Resource{
-				"uname": dataSourceUname(),
-			},
+		Schema: map[string]*schema.Schema{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"uname": dataSourceUname(),
 		},
 	}
 }
