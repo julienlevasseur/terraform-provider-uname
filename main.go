@@ -1,12 +1,19 @@
 package main
 
 import (
-	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
+	"context"
+	"log"
+
+	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 	"github.com/julienlevasseur/terraform-provider-uname/internal/provider"
 )
 
 func main() {
-	plugin.Serve(&plugin.ServeOpts{
-		ProviderFunc: provider.Provider,
+	err := providerserver.Serve(context.Background(), provider.New, providerserver.ServeOpts{
+		Address:         "registry.terraform.io/julienlevasseur/uname",
+		ProtocolVersion: 5,
 	})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
