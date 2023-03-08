@@ -16,23 +16,23 @@ description: |-
 data "uname" "localhost" {}
 
 output "localhost_kernel_name" {
-    value = data.uname.system.kernel_name
+    value = data.uname.localhost.kernel_name
 }
 
 output "localhost_nodename" {
-    value = data.uname.system.nodename
+    value = data.uname.localhost.nodename
 }
 
 output "localhost_kernel_release" {
-    value = data.uname.system.kernel_release
+    value = data.uname.localhost.kernel_release
 }
 
 output "localhost_machine" {
-    value = data.uname.system.machine
+    value = data.uname.localhost.machine
 }
 
 output "localhost_operating_system" {
-    value = data.uname.system.operating_system
+    value = data.uname.localhost.operating_system
 }
 ```
 
