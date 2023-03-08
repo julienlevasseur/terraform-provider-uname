@@ -35,13 +35,36 @@ func dataSourceUname() *schema.Resource {
 }
 
 func dataSourceUnameRead(d *schema.ResourceData, _ interface{}) error {
-	//
 
-	d.Set("kernel_name", goInfo.GetInfo().Kernel)
-	d.Set("nodename", goInfo.GetInfo().Hostname)
-	d.Set("kernel_release", goInfo.GetInfo().Core)
-	d.Set("machine", goInfo.GetInfo().Platform)
-	d.Set("operating_system", goInfo.GetInfo().OS)
+	goInfo, err := goInfo.GetInfo()
+	if err != nil {
+		return err
+	}
+
+	err = d.Set("kernel_name", goInfo.Kernel)
+	if err != nil {
+		return err
+	}
+
+	err = d.Set("nodename", goInfo.Hostname)
+	if err != nil {
+		return err
+	}
+
+	err = d.Set("kernel_release", goInfo.Core)
+	if err != nil {
+		return err
+	}
+
+	err = d.Set("machine", goInfo.Platform)
+	if err != nil {
+		return err
+	}
+
+	err = d.Set("operating_system", goInfo.OS)
+	if err != nil {
+		return err
+	}
 
 	return nil
 
