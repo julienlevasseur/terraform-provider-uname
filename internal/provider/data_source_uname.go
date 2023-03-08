@@ -48,7 +48,7 @@ func (u *unameDataSource) Schema(ctx context.Context, req datasource.SchemaReque
 }
 
 func (n *unameDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_datasource"
+	resp.TypeName = req.ProviderTypeName
 }
 
 func (n *unameDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
