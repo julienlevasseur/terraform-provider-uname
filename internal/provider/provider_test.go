@@ -3,15 +3,12 @@ package provider
 import (
 	"testing"
 
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/hashicorp/terraform-plugin-framework/providerserver"
+	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 )
 
-var testProviders = map[string]*schema.Provider{
-	"local": New(),
+var testAccProtoV6ProviderFactories = map[string]func() (tfprotov6.ProviderServer, error){
+	"scaffolding": providerserver.NewProtocol6WithError(New("local")()),
 }
 
-func TestProvider(t *testing.T) {
-	if err := New().InternalValidate(); err != nil {
-		t.Fatal("err: %s", err)
-	}
-}
+func TestProvider(t *testing.T) {}

@@ -13,10 +13,16 @@ var (
 	_ provider.Provider = (*unameProvider)(nil)
 )
 
-type unameProvider struct{}
+type unameProvider struct {
+	version string
+}
 
-func New() provider.Provider {
-	return &unameProvider{}
+func New(version string) func() provider.Provider {
+	return func() provider.Provider {
+		return &unameProvider{
+			version: version,
+		}
+	}
 }
 
 func (p *unameProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
