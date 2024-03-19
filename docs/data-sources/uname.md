@@ -20,7 +20,7 @@ output "localhost_kernel_name" {
 }
 
 output "localhost_nodename" {
-    value = data.uname.localhost.nodename
+    value = data.uname.localhost.node_name
 }
 
 output "localhost_kernel_release" {
