@@ -19,6 +19,14 @@ func NewUnameDataSource() datasource.DataSource {
 
 type unameDataSource struct{}
 
+type unameDataSourceModel struct {
+	KernelName      types.String `tfsdk:"kernel_name"`
+	NodeName        types.String `tfsdk:"node_name"`
+	KernelRelease   types.String `tfsdk:"kernel_release"`
+	Machine         types.String `tfsdk:"machine"`
+	OperatingSystem types.String `tfsdk:"operating_system"`
+}
+
 func (u *unameDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Description: "Gets Uname informations from the system.",
@@ -56,7 +64,10 @@ func (n *unameDataSource) Read(ctx context.Context, req datasource.ReadRequest, 
 	var config unameDataSourceModel
 	diags := req.Config.Get(ctx, &config)
 
-	goInfo, _ := goInfo.GetInfo()
+	goInfo, err := goInfo.GetInfo()
+	if err != nil {
+		resp.Diagnostics.AddError(err.Error(), "")
+	}
 
 	state := unameDataSourceModel{
 		KernelName:      types.StringValue(goInfo.Kernel),
@@ -67,12 +78,4 @@ func (n *unameDataSource) Read(ctx context.Context, req datasource.ReadRequest, 
 	}
 	diags = resp.State.Set(ctx, state)
 	resp.Diagnostics.Append(diags...)
-}
-
-type unameDataSourceModel struct {
-	KernelName      types.String `tfsdk:"kernel_name"`
-	NodeName        types.String `tfsdk:"node_name"`
-	KernelRelease   types.String `tfsdk:"kernel_release"`
-	Machine         types.String `tfsdk:"machine"`
-	OperatingSystem types.String `tfsdk:"operating_system"`
 }
