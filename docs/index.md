@@ -8,7 +8,7 @@ description: |-
 
 # Uname Provider
 
-A [Terraform](https://terraform.io) provider for system informations.
+A [Terraform](https://terraform.io) provider for system information.
 
 ## Example
 
