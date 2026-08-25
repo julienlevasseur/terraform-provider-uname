@@ -1,7 +1,12 @@
 # Terraform Provider for uname
 
-The Teraform Uname Provider is a plugin for Terraform that allows to access system information from a Terraform Data Source.
+![assets/uname_provider_logo.png](assets/uname_provider_logo.png)
+
+The Uname Provider is a plugin for Terraform & OpenTofu that allows to access system information from a Data Source.
+
 Terraform Registry URL: [https://registry.terraform.io/providers/julienlevasseur/uname](https://registry.terraform.io/providers/julienlevasseur/uname)
+
+OpenTofu Regtistry URL: [https://search.opentofu.org/provider/julienlevasseur/uname/latest](https://search.opentofu.org/provider/julienlevasseur/uname/latest)
 
 ## Quick Starts
 
